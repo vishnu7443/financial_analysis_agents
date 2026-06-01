@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f8fafc; /* Slate 50 */
+    --foreground: #0f172a; /* Slate 900 */
+    --card: rgba(255, 255, 255, 0.85);
+    --border: #e2e8f0;    /* Slate 200 */
+    
+    font-family: 'Inter', sans-serif;
+  }
+
+  :root.dark {
+    --background: #020617; /* Slate 950 */
+    --foreground: #f8fafc; /* Slate 50 */
+    --card: rgba(15, 23, 42, 0.8); /* Slate 900 Glass */
+    --border: #1e293b;    /* Slate 800 */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* Glassmorphism custom components */
+.glass-panel {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-panel {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Scrollbar for Terminals */
+.terminal-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.terminal-scroll::-webkit-scrollbar-track {
+  background: #090d16;
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Premium Gradient Border */
+.gradient-border-card {
+  position: relative;
+  background: var(--card);
+  border-radius: 12px;
+}
+.gradient-border-card::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  background: linear-gradient(135deg, #0284c7, #22c55e);
+  z-index: -1;
+  border-radius: 13px;
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+.gradient-border-card:hover::before {
+  opacity: 0.4;
+}
